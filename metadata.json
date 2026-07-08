@@ -1,0 +1,8 @@
+{
+  "name": "InteliHome",
+  "description": "Website profissional e moderno para a InteliHome - Especialista em elétrica, automação residencial e industrial, CFTV, alarmes e redes estruturadas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

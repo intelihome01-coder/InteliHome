@@ -1,0 +1,62 @@
+import React, { useState } from 'react';
+import { Zap } from 'lucide-react';
+
+interface LogoProps {
+  className?: string;
+  variant?: 'light' | 'dark' | 'colored';
+  size?: 'sm' | 'md' | 'lg';
+}
+
+export default function Logo({ className = '', variant = 'colored', size = 'md' }: LogoProps) {
+  const [imageError, setImageError] = useState(false);
+
+  // Suggested sizes
+  const dims = {
+    sm: { imgHeight: 'h-6 sm:h-8', svgWidth: 140, textClass: 'text-base sm:text-lg' },
+    md: { imgHeight: 'h-8 sm:h-10', svgWidth: 180, textClass: 'text-lg sm:text-2xl' },
+    lg: { imgHeight: 'h-12 sm:h-16', svgWidth: 260, textClass: 'text-2xl sm:text-4xl' },
+  };
+
+  const currentDims = dims[size];
+
+  // Try to use a direct link derived from the user's Postimg page
+  // The Postimg page is https://postimg.cc/ykw0DFWJ
+  // The direct hotlink for this upload is:
+  const directLogoUrl = "https://i.postimg.cc/fRbCgCNv/Chat-GPT-Image-8-07-2026-19-31-06.png"; // Or similar direct proxy
+
+  // If image fails to load or error occurs, fall back to our premium engineered SVG
+  if (imageError) {
+    return (
+      <div className={`flex items-center gap-1.5 sm:gap-2.5 select-none ${className}`} id="brand-fallback-logo">
+        <div className="bg-brand-green p-1.5 sm:p-2 rounded-lg sm:rounded-xl border border-brand-green-tech/30 flex items-center justify-center transition-all duration-300 shadow-md">
+          <Zap className="text-white fill-white/10 w-4 h-4 sm:w-5 sm:h-5 animate-pulse" />
+        </div>
+        <div className="flex flex-col">
+          <span className={`font-display font-extrabold ${currentDims.textClass} tracking-tight leading-none ${
+            variant === 'light' ? 'text-white' : 'text-brand-dark'
+          }`}>
+            Inteli<span className="text-brand-green-tech">Home</span>
+          </span>
+          <span className={`text-[9px] uppercase font-mono tracking-widest mt-0.5 hidden sm:block ${
+            variant === 'light' ? 'text-brand-gray-light/75' : 'text-brand-gray-text'
+          }`}>
+            Elétrica & Automação
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className={`flex items-center ${className}`} id="brand-logo-container">
+      <img
+        src={directLogoUrl}
+        alt="InteliHome"
+        className={`${currentDims.imgHeight} w-auto object-contain`}
+        onError={() => setImageError(true)}
+        referrerPolicy="no-referrer"
+        id="brand-logo-img"
+      />
+    </div>
+  );
+}

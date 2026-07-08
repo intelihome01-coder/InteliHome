@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-green: #0B6B1B;
+  --color-brand-green-tech: #168A2E;
+  --color-brand-white: #FFFFFF;
+  --color-brand-gray-light: #F4F7F5;
+  --color-brand-gray-text: #5F6B63;
+  --color-brand-dark: #1D1D1D;
+}
+
+/* Custom Scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4F7F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0B6B1B;
+  border-radius: 5px;
+  border: 2px solid #F4F7F5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #168A2E;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Glowing text and utilities */
+.glow-green {
+  text-shadow: 0 0 10px rgba(22, 138, 46, 0.4);
+}
+
+.glow-box-green {
+  box-shadow: 0 10px 30px -10px rgba(11, 107, 27, 0.2);
+}
+
+.glow-box-tech {
+  box-shadow: 0 10px 30px -10px rgba(22, 138, 46, 0.15);
+}
