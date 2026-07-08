@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Zap } from 'lucide-react';
+import logoIntelihome from '../assets/logo-intelihome.png';
 
 interface LogoProps {
   className?: string;
@@ -19,8 +20,8 @@ export default function Logo({ className = '', variant = 'colored', size = 'md' 
 
   const currentDims = dims[size];
 
-  // Use local logo asset from the public folder
-  const directLogoUrl = "/images/logo-intelihome.png";
+  // Use local logo asset from the assets folder
+  const directLogoUrl = logoIntelihome;
 
   // If image fails to load or error occurs, fall back to our premium engineered SVG
   if (imageError) {

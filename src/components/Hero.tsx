@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Shield, Zap, Smartphone, ArrowRight } from 'lucide-react';
+import automacaoResidencial from '../assets/automacao-residencial.jpg';
 
 interface HeroProps {
   onLearnMoreClick: () => void;
@@ -20,7 +21,7 @@ export default function Hero({ onLearnMoreClick }: HeroProps) {
       {/* Background Image with Light & Green Overlays */}
       <div className="absolute inset-0 z-0 opacity-15">
         <img
-          src="/images/automacao-residencial.jpg"
+          src={automacaoResidencial}
           alt="InteliHome Smart Home Automation background"
           className="w-full h-full object-cover object-center"
           referrerPolicy="no-referrer"

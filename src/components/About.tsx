@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Shield, Award, HeartHandshake, Eye } from 'lucide-react';
+import cftvSeguranca from '../assets/cftv-seguranca.jpg';
+import quadroComando from '../assets/quadro-comando.jpg';
 
 export default function About() {
   const highlights = [
@@ -38,7 +40,7 @@ export default function About() {
               >
                 <div className="relative rounded-3xl overflow-hidden shadow-lg border border-slate-200/50 aspect-[4/5] group">
                   <img
-                    src="/images/cftv-seguranca.jpg"
+                    src={cftvSeguranca}
                     alt="CFTV e Segurança InteliHome"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     referrerPolicy="no-referrer"
@@ -66,7 +68,7 @@ export default function About() {
                 </div>
                 <div className="relative rounded-3xl overflow-hidden shadow-lg border border-slate-200/50 aspect-[4/5] group">
                   <img
-                    src="/images/quadro-comando.jpg"
+                    src={quadroComando}
                     alt="Quadros de comando InteliHome"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     referrerPolicy="no-referrer"
