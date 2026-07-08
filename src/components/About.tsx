@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Shield, Award, HeartHandshake, Eye } from 'lucide-react';
-import cftvSeguranca from '../assets/cftv-seguranca.jpg';
-import quadroComando from '../assets/quadro-comando.jpg';
+
+const cftvImageUrl = "https://i.postimg.cc/Z4LL1WqT/Chat-GPT-Image-8-07-2026-20-50-35.png";
+const comandoEletricoImageUrl = "https://i.postimg.cc/dwn85gW1/Chat-GPT-Image-8-07-2026-20-51-51.png";
 
 export default function About() {
   const highlights = [
@@ -40,14 +41,11 @@ export default function About() {
               >
                 <div className="relative rounded-3xl overflow-hidden shadow-lg border border-slate-200/50 aspect-[4/5] group">
                   <img
-                    src={cftvSeguranca}
-                    alt="CFTV e Segurança InteliHome"
+                    src={cftvImageUrl}
+                    alt="CFTV & Monitoramento InteliHome"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/20 to-transparent flex items-end p-4">
-                    <span className="text-white font-display font-bold text-sm tracking-wide">CFTV & Monitoramento</span>
-                  </div>
                 </div>
                 <div className="bg-brand-green text-white p-6 rounded-3xl shadow-lg border border-brand-green-tech/20 flex flex-col justify-center text-center">
                   <span className="text-3xl font-display font-black text-white">100%</span>
@@ -68,14 +66,11 @@ export default function About() {
                 </div>
                 <div className="relative rounded-3xl overflow-hidden shadow-lg border border-slate-200/50 aspect-[4/5] group">
                   <img
-                    src={quadroComando}
-                    alt="Quadros de comando InteliHome"
+                    src={comandoEletricoImageUrl}
+                    alt="Comando Elétrico InteliHome"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/20 to-transparent flex items-end p-4">
-                    <span className="text-white font-display font-bold text-sm tracking-wide">Comando Elétrico</span>
-                  </div>
                 </div>
               </motion.div>
             </div>
