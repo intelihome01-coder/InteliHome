@@ -108,7 +108,7 @@ export default function Footer() {
               Área de Atendimento
             </h4>
             <p className="text-brand-gray-light/70 text-sm font-light leading-relaxed">
-              Atendimento personalizado na região de Catalão, Goiás, e cidades vizinhas. Projetos elétricos industriais e automações comerciais sob agendamento prévio.
+              Atendimento personalizado na região de Caldas Novas, Goiás, e cidades vizinhas. Projetos elétricos industriais e automações comerciais sob agendamento prévio.
             </p>
             
             <div className="pt-2">

@@ -307,7 +307,7 @@ export default function ContactForm() {
 
             <div className="pt-8 border-t border-white/10 relative z-10 space-y-1">
               <span className="text-[10px] font-mono text-white/40 block">LOCALIZAÇÃO</span>
-              <p className="text-xs font-semibold text-white">Catalão — Goiás</p>
+              <p className="text-xs font-semibold text-white">Caldas Novas — Goiás</p>
               <p className="text-[10px] text-brand-gray-light/50 font-light">E Cidades Vizinhas</p>
             </div>
 

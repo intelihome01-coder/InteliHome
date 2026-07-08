@@ -20,7 +20,7 @@ export default function Hero({ onLearnMoreClick }: HeroProps) {
       {/* Background Image with Light & Green Overlays */}
       <div className="absolute inset-0 z-0 opacity-15">
         <img
-          src="/src/assets/images/intelihome_hero_bg_1783549682688.jpg"
+          src="/images/automacao-residencial.jpg"
           alt="InteliHome Smart Home Automation background"
           className="w-full h-full object-cover object-center"
           referrerPolicy="no-referrer"

@@ -38,7 +38,7 @@ export default function About() {
               >
                 <div className="relative rounded-3xl overflow-hidden shadow-lg border border-slate-200/50 aspect-[4/5] group">
                   <img
-                    src="/src/assets/images/intelihome_cctv_security_1783549706001.jpg"
+                    src="/images/cftv-seguranca.jpg"
                     alt="CFTV e Segurança InteliHome"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     referrerPolicy="no-referrer"
@@ -66,7 +66,7 @@ export default function About() {
                 </div>
                 <div className="relative rounded-3xl overflow-hidden shadow-lg border border-slate-200/50 aspect-[4/5] group">
                   <img
-                    src="/src/assets/images/intelihome_electrical_panel_1783549694748.jpg"
+                    src="/images/quadro-comando.jpg"
                     alt="Quadros de comando InteliHome"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     referrerPolicy="no-referrer"

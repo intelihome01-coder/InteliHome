@@ -19,10 +19,8 @@ export default function Logo({ className = '', variant = 'colored', size = 'md' 
 
   const currentDims = dims[size];
 
-  // Try to use a direct link derived from the user's Postimg page
-  // The Postimg page is https://postimg.cc/ykw0DFWJ
-  // The direct hotlink for this upload is:
-  const directLogoUrl = "https://i.postimg.cc/fRbCgCNv/Chat-GPT-Image-8-07-2026-19-31-06.png"; // Or similar direct proxy
+  // Use local logo asset from the public folder
+  const directLogoUrl = "/images/logo-intelihome.png";
 
   // If image fails to load or error occurs, fall back to our premium engineered SVG
   if (imageError) {

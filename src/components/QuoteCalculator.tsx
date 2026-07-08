@@ -273,7 +273,7 @@ export default function QuoteCalculator() {
                       <label className="text-xs font-mono uppercase tracking-wide text-brand-gray-text font-bold block">Sua Cidade *</label>
                       <input
                         type="text"
-                        placeholder="Ex: Catalão, Goiandira, etc."
+                        placeholder="Ex: Caldas Novas, Rio Quente, etc."
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-green focus:bg-white transition-all font-semibold"
