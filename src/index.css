@@ -50,3 +50,33 @@ html {
 .glow-box-tech {
   box-shadow: 0 10px 30px -10px rgba(22, 138, 46, 0.15);
 }
+
+/* WhatsApp High-Conversion Call to Action Alerts */
+@keyframes whatsapp-attention {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4), 0 0 0 0px rgba(16, 185, 129, 0.4);
+  }
+  12% {
+    transform: scale(1.12) rotate(-8deg);
+    box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.5), 0 0 0 12px rgba(16, 185, 129, 0);
+  }
+  24% {
+    transform: scale(1.12) rotate(8deg);
+    box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.5), 0 0 0 0px rgba(16, 185, 129, 0);
+  }
+  36% {
+    transform: scale(1.12) rotate(-6deg);
+  }
+  48% {
+    transform: scale(1.12) rotate(6deg);
+  }
+  60% {
+    transform: scale(1.1) rotate(0deg);
+  }
+}
+
+.animate-whatsapp-alert {
+  animation: whatsapp-attention 3.5s infinite ease-in-out;
+}
+

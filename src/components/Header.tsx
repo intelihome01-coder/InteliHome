@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Smartphone } from 'lucide-react';
+import { Menu, X, MessageCircle } from 'lucide-react';
 import Logo from './Logo';
 
 interface HeaderProps {
@@ -88,10 +88,10 @@ export default function Header({ onOpenCalculator }: HeaderProps) {
               href="https://wa.me/5564996091026"
               target="_blank"
               rel="noreferrer"
-              className="bg-brand-green hover:bg-brand-green-tech text-white font-sans font-bold text-sm px-5 py-2.5 rounded-xl transition-all duration-300 shadow-md flex items-center gap-2 active:scale-95 hover:shadow-brand-green/20 hover:shadow-lg"
+              className="bg-brand-green hover:bg-brand-green-tech text-white font-sans font-extrabold text-sm sm:text-base px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl transition-all duration-300 shadow-md flex items-center gap-2.5 active:scale-95 hover:shadow-brand-green/20 hover:shadow-lg hover:-translate-y-0.5"
               id="header-cta-button"
             >
-              <Smartphone size={16} />
+              <MessageCircle size={20} className="fill-white/10" />
               Solicitar Orçamento
             </a>
           </div>
@@ -132,10 +132,10 @@ export default function Header({ onOpenCalculator }: HeaderProps) {
                 href="https://wa.me/5564996091026"
                 target="_blank"
                 rel="noreferrer"
-                className="w-full bg-brand-green hover:bg-brand-green-tech text-white text-center font-bold py-3.5 rounded-xl transition-all shadow-md flex items-center justify-center gap-2"
+                className="w-full bg-brand-green hover:bg-brand-green-tech text-white text-center font-extrabold py-4 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 text-base active:scale-95"
                 id="mobile-cta-button"
               >
-                <Smartphone size={18} />
+                <MessageCircle size={22} className="fill-white/10" />
                 Falar no WhatsApp
               </a>
             </div>

@@ -13,7 +13,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-brand-dark border-t border-brand-gray-light/10 text-white pt-20 pb-8 relative overflow-hidden" id="contato">
+    <footer className="bg-brand-dark border-t border-brand-gray-light/10 text-white pt-20 pb-8 relative overflow-hidden" id="contato-footer">
       
       {/* Decorative details */}
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-brand-green/10 rounded-full blur-3xl pointer-events-none -z-10" />
@@ -94,8 +94,8 @@ export default function Footer() {
                 <Mail size={18} className="text-brand-green shrink-0 mt-0.5" />
                 <div className="space-y-0.5">
                   <span className="block text-xs font-mono text-white/40">E-mail</span>
-                  <a href="mailto:intelihome01@gmail.com" className="text-white hover:text-brand-green-tech transition-colors">
-                    intelihome01@gmail.com
+                  <a href="mailto:contato@intelihome.com" className="text-white hover:text-brand-green-tech transition-colors">
+                    contato@intelihome.com
                   </a>
                 </div>
               </li>

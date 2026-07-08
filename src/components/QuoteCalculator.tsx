@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Calculator, Check, ArrowRight, Sparkles, Smartphone, ShieldCheck, Home, Zap, Server } from 'lucide-react';
+import { supabase } from '../lib/supabaseClient';
 
 export default function QuoteCalculator() {
   const [step, setStep] = useState(1);
@@ -9,6 +10,9 @@ export default function QuoteCalculator() {
   const [name, setName] = useState('');
   const [city, setCity] = useState('');
   const [notes, setNotes] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const servicesList = [
     { id: 'elétrica', label: 'Elétrica Residencial ou Industrial', icon: Zap },
@@ -38,6 +42,10 @@ export default function QuoteCalculator() {
     
     let text = `Olá, InteliHome! Usei o Simulador de Orçamento no site:\n\n`;
     text += `👤 *Nome:* ${name || 'Não informado'}\n`;
+    text += `📞 *WhatsApp:* ${phone || 'Não informado'}\n`;
+    if (email) {
+      text += `📧 *E-mail:* ${email}\n`;
+    }
     text += `📍 *Cidade:* ${city || 'Não informada'}\n`;
     text += `🏢 *Imóvel:* ${propertyLabel || 'Não informado'}\n`;
     text += `⚡ *Serviços de interesse:* ${servicesString || 'Nenhum selecionado'}\n`;
@@ -52,8 +60,43 @@ export default function QuoteCalculator() {
   const isFormValid = () => {
     if (step === 1) return selectedServices.length > 0;
     if (step === 2) return propertyType !== '';
-    if (step === 3) return name.trim() !== '' && city.trim() !== '';
+    if (step === 3) return name.trim() !== '' && city.trim() !== '' && phone.trim() !== '';
     return true;
+  };
+
+  const handleNextStep = async () => {
+    if (step === 3) {
+      setIsSubmitting(true);
+      try {
+        const servicesString = selectedServices.map((s) => s.toUpperCase()).join(', ');
+        const propertyLabel = propertyTypes.find((p) => p.id === propertyType)?.label || propertyType;
+        const msg = `Imóvel: ${propertyLabel}. Cidade: ${city}. Detalhes: ${notes || 'Nenhum'}`;
+
+        const { error } = await supabase
+          .from('leads')
+          .insert([
+            {
+              nome: name,
+              telefone: phone,
+              email: email || null,
+              servico: `Simulador: ${servicesString}`,
+              mensagem: msg,
+              created_at: new Date().toISOString()
+            }
+          ]);
+
+        if (error) {
+          console.warn('Supabase simulator lead store error (possibly table does not exist):', error.message);
+        }
+      } catch (err) {
+        console.error('Falha ao comunicar com o Supabase para salvar simulador:', err);
+      } finally {
+        setIsSubmitting(false);
+        setStep(4);
+      }
+    } else {
+      setStep(step + 1);
+    }
   };
 
   return (
@@ -210,9 +253,9 @@ export default function QuoteCalculator() {
                   className="space-y-6"
                 >
                   <h3 className="font-display font-bold text-brand-dark text-lg sm:text-xl">
-                    Quase pronto! Informe seu nome e cidade:
+                    Quase pronto! Informe seus dados de contato:
                   </h3>
-                  <p className="text-brand-gray-text text-xs sm:text-sm">Queremos saber quem você é e onde o serviço será executado.</p>
+                  <p className="text-brand-gray-text text-xs sm:text-sm">Queremos saber quem você é, de onde fala e como podemos te contatar de volta.</p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
@@ -235,6 +278,40 @@ export default function QuoteCalculator() {
                         onChange={(e) => setCity(e.target.value)}
                         className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-green focus:bg-white transition-all font-semibold"
                         required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-xs font-mono uppercase tracking-wide text-brand-gray-text font-bold block">WhatsApp / Telefone *</label>
+                      <input
+                        type="tel"
+                        placeholder="Ex: (64) 9.9609-1026"
+                        value={phone}
+                        onChange={(e) => {
+                          const numbers = e.target.value.replace(/\D/g, '');
+                          let formatted = numbers;
+                          if (numbers.length > 2) {
+                            formatted = `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
+                          }
+                          if (numbers.length > 6) {
+                            formatted = `(${numbers.slice(0, 2)}) ${numbers.slice(2, 6)}-${numbers.slice(6)}`;
+                          }
+                          if (numbers.length > 10) {
+                            formatted = `(${numbers.slice(0, 2)}) ${numbers.slice(2, 3)}.${numbers.slice(3, 7)}-${numbers.slice(7, 11)}`;
+                          }
+                          setPhone(formatted);
+                        }}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-green focus:bg-white transition-all font-semibold"
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-xs font-mono uppercase tracking-wide text-brand-gray-text font-bold block">Seu E-mail (Opcional)</label>
+                      <input
+                        type="email"
+                        placeholder="Ex: joao@gmail.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-green focus:bg-white transition-all font-semibold"
                       />
                     </div>
                   </div>
@@ -312,15 +389,15 @@ export default function QuoteCalculator() {
 
               {step < 4 ? (
                 <button
-                  onClick={() => setStep(step + 1)}
-                  disabled={!isFormValid()}
+                  onClick={handleNextStep}
+                  disabled={!isFormValid() || isSubmitting}
                   className={`px-8 py-3 rounded-xl font-sans font-bold text-sm transition-all flex items-center gap-2 cursor-pointer ${
-                    isFormValid()
+                    isFormValid() && !isSubmitting
                       ? 'bg-brand-green text-white hover:bg-brand-green-tech shadow-md hover:translate-x-0.5'
                       : 'bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed'
                   }`}
                 >
-                  Continuar
+                  {isSubmitting ? 'Salvando...' : 'Continuar'}
                   <ArrowRight size={16} />
                 </button>
               ) : (
@@ -333,6 +410,8 @@ export default function QuoteCalculator() {
                       setName('');
                       setCity('');
                       setNotes('');
+                      setPhone('');
+                      setEmail('');
                     }}
                     className="px-6 py-3.5 rounded-xl border border-slate-200 text-slate-500 font-semibold hover:bg-slate-50 transition-all text-sm shrink-0 cursor-pointer"
                   >

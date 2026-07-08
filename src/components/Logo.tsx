@@ -13,7 +13,7 @@ export default function Logo({ className = '', variant = 'colored', size = 'md' 
   // Suggested sizes
   const dims = {
     sm: { imgHeight: 'h-6 sm:h-8', svgWidth: 140, textClass: 'text-base sm:text-lg' },
-    md: { imgHeight: 'h-8 sm:h-10', svgWidth: 180, textClass: 'text-lg sm:text-2xl' },
+    md: { imgHeight: 'h-10 sm:h-12', svgWidth: 200, textClass: 'text-xl sm:text-3xl' },
     lg: { imgHeight: 'h-12 sm:h-16', svgWidth: 260, textClass: 'text-2xl sm:text-4xl' },
   };
 

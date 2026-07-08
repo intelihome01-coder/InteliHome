@@ -8,8 +8,9 @@ import HowItWorks from './components/HowItWorks';
 import QuoteCalculator from './components/QuoteCalculator';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
+import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
-import { Smartphone } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 
 export default function App() {
   const scrollToServices = () => {
@@ -58,6 +59,9 @@ export default function App() {
         {/* Real Customer Testimonials */}
         <Testimonials />
 
+        {/* Beautiful Interactive Contact Form (Supabase Leads) */}
+        <ContactForm />
+
         {/* Interactive FAQs Accordion */}
         <FAQ />
 
@@ -71,13 +75,21 @@ export default function App() {
         href="https://wa.me/5564996091026?text=Ol%C3%A1%21+Estou+navegando+no+site+da+InteliHome+e+gostaria+de+falar+com+um+consultor."
         target="_blank"
         rel="noreferrer"
-        className="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group focus:outline-none border border-emerald-400/20"
+        className="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 active:scale-95 group focus:outline-none border border-emerald-400/20 animate-whatsapp-alert"
         title="Falar no WhatsApp"
         aria-label="Falar no WhatsApp"
         id="floating-whatsapp-widget"
       >
-        <span className="absolute inset-0 rounded-full bg-emerald-500/35 animate-ping -z-10 group-hover:animate-none" />
-        <Smartphone className="w-6 h-6" />
+        <span className="absolute inset-0 rounded-full bg-emerald-500/30 animate-ping -z-10 group-hover:animate-none" />
+        
+        <div className="relative flex items-center justify-center">
+          <MessageCircle className="w-7 h-7 fill-white/10" />
+          {/* Pulsing red alert notification badge */}
+          <span className="absolute -top-1.5 -right-1.5 flex h-4 w-4">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-80"></span>
+            <span className="relative inline-flex rounded-full h-4 w-4 bg-red-500 border border-white text-[8px] font-black text-white items-center justify-center shadow-sm">1</span>
+          </span>
+        </div>
         
         {/* Floating tooltip hover indicator */}
         <span className="absolute right-14 bg-brand-dark text-white text-xs font-semibold px-3 py-1.5 rounded-lg border border-brand-green/10 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-md pointer-events-none">
