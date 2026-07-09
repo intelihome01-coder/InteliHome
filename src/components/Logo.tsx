@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Zap } from 'lucide-react';
-import logoIntelihome from '../assets/logo-intelihome.png';
 
 interface LogoProps {
   className?: string;
@@ -9,7 +8,7 @@ interface LogoProps {
 }
 
 export default function Logo({ className = '', variant = 'colored', size = 'md' }: LogoProps) {
-  const [logoSrc, setLogoSrc] = useState<string>(logoIntelihome);
+  const [logoSrc, setLogoSrc] = useState<string>('/images/logo-intelihome.png');
   const [useFallbackText, setUseFallbackText] = useState(false);
 
   // Suggested sizes
@@ -22,8 +21,8 @@ export default function Logo({ className = '', variant = 'colored', size = 'md' 
   const currentDims = dims[size];
 
   const handleImageError = () => {
-    if (logoSrc === logoIntelihome) {
-      // First fallback: try the direct root path from the public folder (unhashed)
+    if (logoSrc === '/images/logo-intelihome.png') {
+      // First fallback: try the root path
       setLogoSrc('/logo-intelihome.png');
     } else {
       // Second fallback: use the premium SVG text logo

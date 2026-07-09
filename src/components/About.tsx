@@ -39,12 +39,11 @@ export default function About() {
                 transition={{ duration: 0.6 }}
                 className="space-y-4"
               >
-                <div className="relative rounded-3xl overflow-hidden shadow-lg border border-slate-200/50 aspect-[4/5] group">
-                  <img
-                    src={cftvImageUrl}
-                    alt="CFTV & Monitoramento InteliHome"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    referrerPolicy="no-referrer"
+                <div className="relative rounded-[24px] overflow-hidden shadow-lg border border-slate-200/50 aspect-[4/5] group image-card">
+                  <img 
+                    src={cftvImageUrl} 
+                    alt="CFTV & Monitoramento InteliHome" 
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="bg-brand-green text-white p-6 rounded-3xl shadow-lg border border-brand-green-tech/20 flex flex-col justify-center text-center">
@@ -64,12 +63,11 @@ export default function About() {
                   <Eye className="text-brand-green-tech mx-auto mb-2 animate-pulse" size={28} />
                   <p className="text-xs font-medium text-brand-gray-light/80 leading-relaxed">Praticidade e controle por celular ou Alexa</p>
                 </div>
-                <div className="relative rounded-3xl overflow-hidden shadow-lg border border-slate-200/50 aspect-[4/5] group">
-                  <img
-                    src={comandoEletricoImageUrl}
-                    alt="Comando Elétrico InteliHome"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    referrerPolicy="no-referrer"
+                <div className="relative rounded-[24px] overflow-hidden shadow-lg border border-slate-200/50 aspect-[4/5] group image-card">
+                  <img 
+                    src={comandoEletricoImageUrl} 
+                    alt="Comando Elétrico InteliHome" 
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </motion.div>
