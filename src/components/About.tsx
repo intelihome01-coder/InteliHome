@@ -43,7 +43,7 @@ export default function About() {
                   <img 
                     src={cftvImageUrl} 
                     alt="CFTV & Monitoramento InteliHome" 
-                    className="w-full h-full object-cover"
+                    className="card-image"
                   />
                 </div>
                 <div className="bg-brand-green text-white p-6 rounded-3xl shadow-lg border border-brand-green-tech/20 flex flex-col justify-center text-center">
@@ -67,7 +67,7 @@ export default function About() {
                   <img 
                     src={comandoEletricoImageUrl} 
                     alt="Comando Elétrico InteliHome" 
-                    className="w-full h-full object-cover"
+                    className="card-image"
                   />
                 </div>
               </motion.div>
