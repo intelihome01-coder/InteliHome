@@ -9,7 +9,8 @@ interface LogoProps {
 }
 
 export default function Logo({ className = '', variant = 'colored', size = 'md' }: LogoProps) {
-  const [imageError, setImageError] = useState(false);
+  const [logoSrc, setLogoSrc] = useState<string>(logoIntelihome);
+  const [useFallbackText, setUseFallbackText] = useState(false);
 
   // Suggested sizes
   const dims = {
@@ -20,11 +21,18 @@ export default function Logo({ className = '', variant = 'colored', size = 'md' 
 
   const currentDims = dims[size];
 
-  // Use local logo asset from the assets folder
-  const directLogoUrl = logoIntelihome;
+  const handleImageError = () => {
+    if (logoSrc === logoIntelihome) {
+      // First fallback: try the direct root path from the public folder (unhashed)
+      setLogoSrc('/logo-intelihome.png');
+    } else {
+      // Second fallback: use the premium SVG text logo
+      setUseFallbackText(true);
+    }
+  };
 
-  // If image fails to load or error occurs, fall back to our premium engineered SVG
-  if (imageError) {
+  // If both logo formats fail, fall back to our premium engineered SVG
+  if (useFallbackText) {
     return (
       <div className={`flex items-center gap-1.5 sm:gap-2.5 select-none ${className}`} id="brand-fallback-logo">
         <div className="bg-brand-green p-1.5 sm:p-2 rounded-lg sm:rounded-xl border border-brand-green-tech/30 flex items-center justify-center transition-all duration-300 shadow-md">
@@ -49,10 +57,10 @@ export default function Logo({ className = '', variant = 'colored', size = 'md' 
   return (
     <div className={`flex items-center ${className}`} id="brand-logo-container">
       <img
-        src={directLogoUrl}
+        src={logoSrc}
         alt="InteliHome"
         className={`${currentDims.imgHeight} w-auto object-contain`}
-        onError={() => setImageError(true)}
+        onError={handleImageError}
         referrerPolicy="no-referrer"
         id="brand-logo-img"
       />
